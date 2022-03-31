@@ -11,13 +11,13 @@ app.use(express.json());
 
 app.get("/add", (req, res) => {
   const menuItem = new Menu({
-    name: "Com chien",
-    price: 20000,
+    name: "Bun dau mam tom",
+    price: 100000,
   });
   menuItem.save().then((result) => res.send(result));
 });
 
-app.get("/", (req, res) => {
+app.get("/menu", (req, res) => {
   Menu.find().then((result) => res.send(result));
 });
 
