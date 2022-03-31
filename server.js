@@ -20,7 +20,9 @@ app.get("/add", (req, res) => {
 app.get("/menu", (req, res) => {
   Menu.find().then((result) => res.send(result));
 });
-
+app.get("/", (req, res) => {
+  res.send("Hello to quan ly nha hang");
+});
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server is listening on PORT: ${port}`);
