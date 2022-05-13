@@ -21,17 +21,19 @@ const verifyToken = (req, res, next) => {
 };
 const isAdmin = async (req, res, next) => {
   await User.findById(req.userId).then((user) => {
-    Role.findOne({ _id: user.role._id }, (err, role) => {
-      if (err) {
-        res.status(500).send({ message: err.message });
+    if (user.role) {
+      Role.findOne({ _id: user.role._id }, (err, role) => {
+        if (err) {
+          res.status(500).send({ message: err.message });
+          return;
+        }
+        if (role.name === "admin") {
+          return next();
+        }
+        res.status(403).send({ message: "Require admin role" });
         return;
-      }
-      if (role.name === "admin") {
-        return next();
-      }
-      res.status(403).send({ message: "Require admin role" });
-      return;
-    });
+      });
+    }
   });
 };
 const auth = {
