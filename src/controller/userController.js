@@ -1,12 +1,11 @@
 import User from "../model/user.js";
 import UserService from "../service/userServices.js";
-const allAccess = (req, res) => {
-  res.status(200).send("Public Content");
-};
-const userBoard = async (req, res) => {
-  await User.find().then((users) => {
-    res.status(200).send(users);
-  });
+const allUser = async (req, res) => {
+  await User.find()
+    .populate("role")
+    .then((users) => {
+      res.status(200).send(users);
+    });
 };
 const adminBoard = (req, res) => {
   res.status(200).send("Admin Content");
@@ -22,8 +21,7 @@ const deleteUser = async (req, res) => {
   });
 };
 let UserController = {
-  allAccess,
-  userBoard,
+  allUser,
   adminBoard,
   updateUser,
   deleteUser,
