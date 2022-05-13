@@ -22,16 +22,20 @@ AuthService.Register = async (req, res) => {
         return;
       }
       if (req.body.role) {
-        await Role.findOne({ name: req.body.role }, (err, role) => {
-          if (err) {
-            res.status(500).send({ message: err });
-            return;
+        await Role.findOne({ name: req.body.role }).then((role) => {
+          try {
+            if (err) {
+              res.status(500).send({ message: err });
+              return;
+            }
+            user.role = role._id;
+            user
+              .save()
+              .then((result) => res.send(result))
+              .catch((err) => res.send({ message: err.message }));
+          } catch (err) {
+            res.send({ message: err.message });
           }
-          user.role = role._id;
-          user
-            .save()
-            .then((result) => res.send(result))
-            .catch((err) => res.send({ message: err.message }));
         });
       } else if (!req.body.role) {
         try {
