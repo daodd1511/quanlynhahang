@@ -1,5 +1,5 @@
 import User from "../model/user.js";
-import UserService from "../service/userServices.js";
+import UserService from "../service/userService.js";
 const allUser = async (req, res) => {
   await User.find()
     .populate("role")

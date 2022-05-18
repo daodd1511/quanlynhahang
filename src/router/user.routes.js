@@ -10,7 +10,7 @@ userRouter.get(
   [auth.verifyToken, auth.isAdmin],
   UserController.adminBoard
 );
-userRouter.put("/update/:id", (req, res) => {
+userRouter.put("/update/:id", auth.verifyToken, (req, res) => {
   UserController.updateUser(req, res);
 });
 userRouter.delete(
