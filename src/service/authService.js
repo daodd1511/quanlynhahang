@@ -123,7 +123,7 @@ AuthService.ForgotPassword = async (req, res) => {
         subject: "Reset Password",
         html: `
         <h3>Please click the link below to reset your password<h3>
-        <a href="http://localhost:4000/api/auth/reset-pass/${forgotPasswordToken}">Reset Password</a>
+        <a href="https://resmanagement.herokuapp.com/api/auth/reset-pass/${forgotPasswordToken}">Reset Password</a>
       `,
       };
       transporter.sendMail(data, (err, body) => {
@@ -161,7 +161,25 @@ AuthService.ResetPassword = (req, res) => {
           user.password = newEncryptedPassword;
           await user.save();
         });
-      res.send(`Your new password is: ${newPassword}`);
+      const responseTemplate = `
+      <html>
+        <head>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&display=swap');
+            body {
+              font-family: 'Be Vietnam Pro', sans-serif;
+            }
+            h2 {
+              text-align:center;padding-top:50px;
+            }
+          </style>
+        </head>
+        <body>
+          <h2>Your new password is: ${newPassword}</h2>
+        </body>
+      </html>
+      `;
+      res.send(responseTemplate);
     });
   } catch (err) {
     return res.status(401).send("Invalid Token");
