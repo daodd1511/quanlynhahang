@@ -15,4 +15,10 @@ authRouter.post(
 authRouter.post("/login", (req, res) => {
   AuthController.Login(req, res);
 });
+authRouter.post("/reset-pass", (req, res) => {
+  AuthController.ForgotPassword(req, res);
+});
+authRouter.get("/reset-pass/:token", (req, res) => {
+  AuthController.ResetPassword(req, res);
+});
 export default authRouter;
