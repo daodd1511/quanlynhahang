@@ -25,7 +25,7 @@ function shuffle(array) {
 QuestionService.Random = () => {
   let data = [];
   for (let key in question) {
-    data.push(key + ": " + question[key][getRandomInt(3)].Question);
+    data.push(question[key][getRandomInt(question[key].length)]);
   }
   return shuffle(data);
 };
