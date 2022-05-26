@@ -10,6 +10,11 @@ const allUser = async (req, res) => {
 const adminBoard = (req, res) => {
   res.status(200).send("Admin Content");
 };
+const getUserById = async (req, res) => {
+  await UserService.getUserById(req.params.id).then((user) => {
+    res.status(200).send(user);
+  });
+};
 const updateUser = async (req, res) => {
   await UserService.update(req.params.id, req.body).then((updatedUser) => {
     res.status(200).send(updatedUser);
@@ -23,6 +28,7 @@ const deleteUser = async (req, res) => {
 let UserController = {
   allUser,
   adminBoard,
+  getUserById,
   updateUser,
   deleteUser,
 };
