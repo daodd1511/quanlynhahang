@@ -57,8 +57,10 @@ DishService.update = async (id, data) => {
       .catch((err) => {
         res.send(err);
       });
+  } else {
+    await Dish.findByIdAndUpdate(id, data);
   }
-  return await Dish.find({ _id: id }).populate("category");
+  return await Dish.findOne({ _id: id }).populate("category");
 };
 DishService.delete = async (id) => {
   return await Dish.findByIdAndRemove(id);
