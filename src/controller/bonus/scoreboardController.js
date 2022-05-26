@@ -8,6 +8,7 @@ ScoreboardController.getScoreboard = async (req, res) => {
       for (let i = 0; i < 15; i++) {
         topUser.push(user[i]);
       }
+
       res.send(user);
     });
   } catch (err) {
