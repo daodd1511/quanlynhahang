@@ -3,7 +3,6 @@ const ScoreboardController = {};
 ScoreboardController.getScoreboard = async (req, res) => {
   try {
     await ScoreboardService.getScoreboard().then((user) => {
-      let topUser = [];
       user.sort((a, b) => b.point - a.point);
       for (let i = 0; i < user.length; i++) {
         user[i].rank = i + 1;
