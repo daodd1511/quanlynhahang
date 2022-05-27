@@ -9,7 +9,7 @@ ScoreboardController.getScoreboard = async (req, res) => {
         topUser.push(user[i]);
       }
 
-      res.send(user);
+      res.send(topUser);
     });
   } catch (err) {
     res.send(err);
