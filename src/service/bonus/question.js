@@ -7,7 +7,7 @@ function shuffle(array) {
   let currentIndex = array.length,
     randomIndex;
 
-  //ab While there remain elements to shuffle.
+  // While there remain elements to shuffle.
   while (currentIndex != 0) {
     // Pick a remaining element.
     randomIndex = Math.floor(Math.random() * currentIndex);
