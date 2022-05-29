@@ -33,6 +33,9 @@ const isAdmin = async (req, res, next) => {
         res.status(403).send({ message: "Require admin role" });
         return;
       });
+    } else {
+      res.status(403).send({ message: "Require admin role" });
+      return next();
     }
   });
 };

@@ -2,7 +2,7 @@ import auth from "../middleware/auth.js";
 import UserController from "../controller/userController.js";
 import express from "express";
 const userRouter = express.Router();
-userRouter.get("/", [auth.verifyToken, auth.isAdmin], (req, res) => {
+userRouter.get("/", auth.verifyToken, auth.isAdmin, (req, res) => {
   UserController.allUser(req, res);
 });
 userRouter.get(
