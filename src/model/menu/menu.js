@@ -9,8 +9,9 @@ const dishSchema = new Schema({
     type: Number,
     required: true,
   },
-  status: {
-    type: String,
+  available: {
+    type: Boolean,
+    default: true,
   },
   image: {
     type: String,
