@@ -1,6 +1,7 @@
 import Table from "../model/table.js";
 const TableService = {};
 TableService.getAll = async () => {
+  console.log(Table.find());
   return await Table.find();
 };
 TableService.add = async (data) => {

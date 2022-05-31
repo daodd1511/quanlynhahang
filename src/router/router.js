@@ -4,6 +4,7 @@ import authRouter from "./auth.routes.js";
 import dishRouter from "./dish.routes.js";
 import categoryRouter from "./category.routes.js";
 import tableRouter from "./table.routes.js";
+import orderRouter from "./order.routes.js";
 import ScoreboardController from "../controller/bonus/scoreboardController.js";
 import QuestionService from "../service/bonus/question.js";
 const router = express.Router();
@@ -12,6 +13,7 @@ router.use("/user", userRouter);
 router.use("/menu", dishRouter);
 router.use("/menu/category", categoryRouter);
 router.use("/table", tableRouter);
+router.use("/order", orderRouter);
 router.get("/bonus/scoreboard", async (req, res) => {
   await ScoreboardController.getScoreboard(req, res);
 });
