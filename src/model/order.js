@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 const orderSchema = new Schema({
   staff_id: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
-  order_date: { type: Date },
+  order_date: { type: String },
   payment_status: { type: Boolean, default: false },
   total: { type: Number, default: null },
   table_id: { type: mongoose.Schema.Types.ObjectId, ref: "table" },
